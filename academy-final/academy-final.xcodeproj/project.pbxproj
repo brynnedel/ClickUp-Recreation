@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		411B6AF129F307F2002E4865 /* TaskViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 411B6AF029F307F2002E4865 /* TaskViewModel.swift */; };
+		411B6AF329F308F3002E4865 /* TasksViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 411B6AF229F308F3002E4865 /* TasksViewModel.swift */; };
+		411B6AF729F43F7B002E4865 /* EditTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 411B6AF629F43F7B002E4865 /* EditTaskView.swift */; };
+		411B6AF929F4639B002E4865 /* Sidebar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 411B6AF829F4639B002E4865 /* Sidebar.swift */; };
 		41AFC7AC29EE3486003887C0 /* academy_finalApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41AFC7AB29EE3486003887C0 /* academy_finalApp.swift */; };
 		41AFC7AE29EE3486003887C0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41AFC7AD29EE3486003887C0 /* ContentView.swift */; };
 		41AFC7B029EE3487003887C0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 41AFC7AF29EE3487003887C0 /* Assets.xcassets */; };
@@ -21,6 +25,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		411B6AF029F307F2002E4865 /* TaskViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskViewModel.swift; sourceTree = "<group>"; };
+		411B6AF229F308F3002E4865 /* TasksViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksViewModel.swift; sourceTree = "<group>"; };
+		411B6AF629F43F7B002E4865 /* EditTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTaskView.swift; sourceTree = "<group>"; };
+		411B6AF829F4639B002E4865 /* Sidebar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sidebar.swift; sourceTree = "<group>"; };
 		41AFC7A829EE3486003887C0 /* academy-final.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "academy-final.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		41AFC7AB29EE3486003887C0 /* academy_finalApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = academy_finalApp.swift; sourceTree = "<group>"; };
 		41AFC7AD29EE3486003887C0 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -49,6 +57,7 @@
 		41AFC79F29EE3486003887C0 = {
 			isa = PBXGroup;
 			children = (
+				411B6AF229F308F3002E4865 /* TasksViewModel.swift */,
 				41AFC7AA29EE3486003887C0 /* academy-final */,
 				41AFC7A929EE3486003887C0 /* Products */,
 			);
@@ -88,11 +97,13 @@
 			isa = PBXGroup;
 			children = (
 				41AFC7AD29EE3486003887C0 /* ContentView.swift */,
+				411B6AF829F4639B002E4865 /* Sidebar.swift */,
 				41AFC7C729EF304B003887C0 /* DoneView.swift */,
 				41AFC7B929EE3E01003887C0 /* HomeToDoView.swift */,
 				41AFC7BB29EE4065003887C0 /* ToDoItem.swift */,
 				41AFC7C329EF052E003887C0 /* CommentView.swift */,
 				41AFC7C529EF07FA003887C0 /* AddTask.swift */,
+				411B6AF629F43F7B002E4865 /* EditTaskView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -100,6 +111,7 @@
 		41AFC7BE29EEFEDC003887C0 /* View Models */ = {
 			isa = PBXGroup;
 			children = (
+				411B6AF029F307F2002E4865 /* TaskViewModel.swift */,
 			);
 			path = "View Models";
 			sourceTree = "<group>";
@@ -177,12 +189,16 @@
 				41AFC7BA29EE3E01003887C0 /* HomeToDoView.swift in Sources */,
 				41AFC7C029EEFF1D003887C0 /* TaskItem.swift in Sources */,
 				41AFC7AE29EE3486003887C0 /* ContentView.swift in Sources */,
+				411B6AF129F307F2002E4865 /* TaskViewModel.swift in Sources */,
 				41AFC7BC29EE4065003887C0 /* ToDoItem.swift in Sources */,
 				41AFC7C629EF07FA003887C0 /* AddTask.swift in Sources */,
 				41AFC7C829EF304B003887C0 /* DoneView.swift in Sources */,
 				41AFC7C229EF0146003887C0 /* Tasks.swift in Sources */,
 				41AFC7C429EF052E003887C0 /* CommentView.swift in Sources */,
+				411B6AF729F43F7B002E4865 /* EditTaskView.swift in Sources */,
 				41AFC7AC29EE3486003887C0 /* academy_finalApp.swift in Sources */,
+				411B6AF929F4639B002E4865 /* Sidebar.swift in Sources */,
+				411B6AF329F308F3002E4865 /* TasksViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

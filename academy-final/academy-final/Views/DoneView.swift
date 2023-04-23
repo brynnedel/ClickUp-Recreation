@@ -8,29 +8,22 @@
 import SwiftUI
 
 struct DoneView: View {
-    @StateObject var tasks: Tasks
-
+    @ObservedObject var tasks: Tasks
+    
     var body: some View {
         VStack (alignment: .leading){
             Text("Done")
-            ForEach(tasks.items) { item in
-                if (item.isDone) {
-                    rectangle
-                    ToDoItem(task: item)
+            ForEach (tasks.items) { task in
+                if (task.isDone) {
+                    ToDoItem(vm: TaskViewModel(task: task), tasks: tasks)
                 }
             }
         }
-    }
-    var rectangle: some View {
-        Rectangle()
-            .frame(height: 1)
-            .foregroundColor(.gray)
-            .padding(.all, 4)
     }
 }
 
 struct DoneView_Previews: PreviewProvider {
     static var previews: some View {
-        DoneView(tasks: Tasks.example)
+        DoneView(tasks: .example)
     }
 }

@@ -12,6 +12,7 @@ struct AddTask: View {
     @State private var date = Date()
     @State private var showDatePick = false
     @State private var isDone = false
+    @State private var info = ""
     @ObservedObject var tasks: Tasks
     @Environment(\.dismiss) var dismiss
     @FocusState private var keyboardFocused: Bool
@@ -67,6 +68,16 @@ struct AddTask: View {
             if (showDatePick) {
                 AddDate(date: $date)
             }
+            rectangle
+            TextField("Add info", text: $info)
+                .padding(.leading)
+                .font(.title2)
+                .focused($keyboardFocused)
+                .onAppear {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                        keyboardFocused = true
+                    }
+                }
             Spacer()
             .padding(.leading)
             .toolbar {
@@ -80,7 +91,7 @@ struct AddTask: View {
                 }
                 ToolbarItem(placement: .bottomBar) {
                     Button("Create") {
-                        let task = TaskItem(taskName: name, isDone: self.isDone, dueDate: date)
+                        let task = TaskItem(taskName: name, isDone: self.isDone, dueDate: date, info: info)
                         tasks.items.append(task)
                         dismiss()
                     }
@@ -113,6 +124,6 @@ struct AddDate: View {
 
 struct AddTask_Previews: PreviewProvider {
     static var previews: some View {
-        AddTask(tasks: Tasks())
+        AddTask(tasks: .example)
     }
 }

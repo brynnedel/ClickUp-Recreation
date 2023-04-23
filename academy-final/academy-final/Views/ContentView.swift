@@ -8,20 +8,28 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State var showToDo = true
-    @State var showComm = false
-    @State var showDone = false
-    var categories = ["Today", "Overdue", "Next", "No due date"]
+    @State private var showToDo = true
+    @State private var showComm = false
+    @State private var showDone = false
+    @State private var isSideOpen = false
+    @ObservedObject var tasks = Tasks()
+    @State private var showAddTask = false
+    var categories = ["Today", "Overdue", "Next"]
     
     
     var body: some View {
         ZStack {
-            VStack {
+            NavigationStack {
                 HStack (alignment: .top){
-                    Image(systemName: "line.3.horizontal")
-                        .resizable()
-                        .frame(width: 20, height: 20)
-                        .padding(.trailing)
+                    Button {
+                        isSideOpen.toggle()
+                    } label: {
+                        Image(systemName: "line.3.horizontal")
+                            .resizable()
+                            .frame(width: 20, height: 20)
+                            .padding(.trailing)
+                    }
+                    .buttonStyle(.plain)
                     Spacer()
                     Text("Home")
                         .font(.title)
@@ -29,9 +37,11 @@ struct ContentView: View {
                     Image(systemName: "bell")
                         .resizable()
                         .frame(width: 24, height: 24)
+                        .padding(.horizontal, 4)
                     Image(systemName: "gearshape")
                         .resizable()
                         .frame(width: 24, height: 24)
+                        .padding(.horizontal, 4)
                 }
                 .padding()
                 VStack {
@@ -81,7 +91,7 @@ struct ContentView: View {
                 List {
                     if (self.showToDo) {
                         ForEach(categories, id: \.self) {category in
-                            HomeToDoView(category: category)
+                            HomeToDoView(tasks: tasks, category: category)
                         }
                     }
                     if (self.showComm) {
@@ -89,12 +99,33 @@ struct ContentView: View {
                             .frame(maxWidth: .infinity, alignment: .center)
                     }
                     if (self.showDone) {
-                        DoneView(tasks: Tasks.example)
+                        DoneView(tasks: tasks)
                     }
                 }
             }
+            VStack {
+                Spacer()
+                HStack {
+                    Spacer()
+                    Button {
+                        showAddTask.toggle()
+                    } label: {
+                        Image(systemName: "plus")
+                            .resizable()
+                            .frame(width: 30, height: 30)
+                            .foregroundColor(.white)
+                            .padding(10)
+                            .background(.purple)
+                            .cornerRadius(10)
+                    }
+                }
+                .padding()
+            }
+            .sheet(isPresented: $showAddTask) {
+                AddTask(tasks: tasks)
+            }
+            Sidebar(isSidebarVisible: $isSideOpen, tasks: tasks)
         }
-        
     }
 }
 

@@ -8,7 +8,12 @@
 import Foundation
 
 class Tasks: ObservableObject {
-    @Published var items = [TaskItem]()
+    @Published var items = [TaskItem.example, TaskItem.example1]
+    
+    func removeTask(task: TaskItem) {
+            items.removeAll { $0.id == task.id }
+        }
+
 }
 
 extension Tasks {

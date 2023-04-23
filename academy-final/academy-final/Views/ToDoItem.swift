@@ -8,27 +8,42 @@
 import SwiftUI
 
 struct ToDoItem: View {
-    @State var task: TaskItem
+    @ObservedObject var vm: TaskViewModel
+    @State private var showEdit: Bool = false
+    @ObservedObject var tasks: Tasks
+        
     var body: some View {
-        HStack {
-            if (task.isDone) {
-                Image(systemName: "square.fill")
-                    .foregroundColor(.green)
-            } else {
-                Image(systemName: "square.fill")
-                    .foregroundColor(.gray)
+        Button {
+            self.showEdit.toggle()
+        } label: {
+            VStack {
+                rectangle
+                HStack {
+                    Image(systemName: "square.fill")
+                        .foregroundColor(vm.isDone ? .green : .gray)
+                    
+                    Text(vm.taskName)
+                        .foregroundColor(.gray)
+                    Spacer()
+                    Text(vm.dueDate, format: .dateTime.day().month().year())
+                        .foregroundColor(.gray)
+                }
             }
-            Text(task.taskName)
-                .foregroundColor(.gray)
-            Spacer()
-            Text(task.dueDate, format: .dateTime.day().month().year())
-                .foregroundColor(.gray)
         }
+        .sheet(isPresented: $showEdit) {
+            EditTaskView(task: vm, tasks: tasks)
+        }
+    }
+    var rectangle: some View {
+        Rectangle()
+            .frame(height: 1)
+            .foregroundColor(.gray)
+            .padding(.all, 4)
     }
 }
 
 struct ToDoItem_Previews: PreviewProvider {
     static var previews: some View {
-        ToDoItem(task: TaskItem.example)
+        ToDoItem(vm: TaskViewModel(task: .example1), tasks: .example)
     }
 }
