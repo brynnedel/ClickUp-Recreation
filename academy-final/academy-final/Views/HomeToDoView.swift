@@ -13,12 +13,11 @@ struct HomeToDoView: View {
     @State private var showAddTask = false
     var category: String
     @State private var count = 0
-    
-    
+
     var body: some View {
         let myCalendar = Calendar(identifier: .gregorian)
         let ymd = myCalendar.dateComponents([.year, .month, .day], from: Date())
-        VStack (alignment: .leading){
+        VStack(alignment: .leading) {
             Button {
                 self.showText.toggle()
             } label: {
@@ -30,7 +29,7 @@ struct HomeToDoView: View {
                     Spacer()
                     Button {
                         showAddTask = true
-                    }label: {
+                    } label: {
                         Image(systemName: "plus")
                             .resizable()
                             .frame(width: 16, height: 16)
@@ -43,25 +42,25 @@ struct HomeToDoView: View {
             }
             .buttonStyle(.plain)
             VStack {
-                if (self.showText && category == "Today") {
+                if self.showText && category == "Today" {
                     ForEach(tasks.items) { task in
                         let comp = myCalendar.dateComponents([.year, .month, .day], from: task.dueDate)
-                        if (ymd == comp && !task.isDone) {
+                        if ymd == comp && !task.isDone {
                             ToDoItem(vm: TaskViewModel(task: task), tasks: tasks)
                         }
                     }
                 }
-                if (self.showText && category == "Overdue") {
+                if self.showText && category == "Overdue" {
                     ForEach(tasks.items) { task in
                         let comp = myCalendar.dateComponents([.year, .month, .day], from: task.dueDate)
-                        if (comp != ymd && task.dueDate < Date.now && !task.isDone) {
+                        if comp != ymd && task.dueDate < Date.now && !task.isDone {
                             ToDoItem(vm: TaskViewModel(task: task), tasks: tasks)
                         }
                     }
                 }
-                if (self.showText && category == "Next") {
+                if self.showText && category == "Next" {
                     ForEach(tasks.items) { task in
-                        if (task.dueDate > Date.now && !task.isDone) {
+                        if task.dueDate > Date.now && !task.isDone {
                             ToDoItem(vm: TaskViewModel(task: task), tasks: tasks)
                         }
                     }
@@ -71,9 +70,8 @@ struct HomeToDoView: View {
                 AddTask(tasks: tasks)
             }
         }
-    }    
+    }
 }
-
 
 struct HomeToDoView_Previews: PreviewProvider {
     static var previews: some View {

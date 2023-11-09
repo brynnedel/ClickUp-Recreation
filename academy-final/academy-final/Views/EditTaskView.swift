@@ -87,6 +87,7 @@ struct EditTaskView: View {
                 .toolbar {
                     ToolbarItem(placement: .automatic) {
                         Button {
+                            task.task.isEdit = false
                             dismiss()
                         } label: {
                             Image(systemName: "xmark")
@@ -97,9 +98,9 @@ struct EditTaskView: View {
                         Button("Save") {
                             task.changeDate(date: date)
                             tasks.removeTask(task: task.task)
-                            let task = TaskItem(taskName: task.taskName, isDone: self.isDone, dueDate: date, info: task.task.info)
+                            let task = TaskItem(taskName: task.taskName, isDone: task.isDone, dueDate: task.dueDate, info: task.task.info)
                             tasks.items.append(task)
-                            dismiss().self
+                            dismiss()
                         }
                         .padding(8)
                         .buttonStyle(.plain)
@@ -126,3 +127,4 @@ struct EditTaskView_Previews: PreviewProvider {
         EditTaskView(task: TaskViewModel(task: .example), tasks: .example)
     }
 }
+

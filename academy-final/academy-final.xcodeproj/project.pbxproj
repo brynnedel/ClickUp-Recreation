@@ -57,7 +57,6 @@
 		41AFC79F29EE3486003887C0 = {
 			isa = PBXGroup;
 			children = (
-				411B6AF229F308F3002E4865 /* TasksViewModel.swift */,
 				41AFC7AA29EE3486003887C0 /* academy-final */,
 				41AFC7A929EE3486003887C0 /* Products */,
 			);
@@ -112,6 +111,7 @@
 			isa = PBXGroup;
 			children = (
 				411B6AF029F307F2002E4865 /* TaskViewModel.swift */,
+				411B6AF229F308F3002E4865 /* TasksViewModel.swift */,
 			);
 			path = "View Models";
 			sourceTree = "<group>";

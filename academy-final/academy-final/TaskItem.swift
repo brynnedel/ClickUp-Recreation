@@ -8,11 +8,12 @@
 import Foundation
 
 struct TaskItem: Identifiable {
-     var id = UUID()
-     var taskName: String
-     var isDone: Bool
-     var dueDate: Date
+    var id = UUID()
+    var taskName: String
+    var isDone: Bool
+    var dueDate: Date
     var info: String
+    var isEdit: Bool = false
     
     mutating func toggleDone(){
         self.isDone = !self.isDone

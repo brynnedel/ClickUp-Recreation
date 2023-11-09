@@ -14,7 +14,7 @@ struct ToDoItem: View {
         
     var body: some View {
         Button {
-            self.showEdit.toggle()
+            vm.task.isEdit = true
         } label: {
             VStack {
                 rectangle
@@ -30,7 +30,7 @@ struct ToDoItem: View {
                 }
             }
         }
-        .sheet(isPresented: $showEdit) {
+        .sheet(isPresented: $vm.task.isEdit) {
             EditTaskView(task: vm, tasks: tasks)
         }
     }
